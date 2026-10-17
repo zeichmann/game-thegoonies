@@ -29,7 +29,7 @@
 # ======================================================================
 # El despachador de 0x4060 es el mismo que usan los demas cartuchos de esta
 # familia de Konami. Rastreando la cola `5e 23 56 eb e9` por las 47 ROM de
-# DES_ASM/ROMS aparece, y siempre una sola vez, en: Sky Jaguar (RC-721),
+# DES_ASM/comun/ROMS aparece, y siempre una sola vez, en: Sky Jaguar (RC-721),
 # Yie Ar Kung-Fu (las dos compilaciones), Hyper Rally (RC-718), Road Fighter
 # (RC-730), Ping Pong (RC-731), Soccer y Football (RC-732), Hyper Sports 3
 # (RC-733), este, Nemesis (RC-742) y F-1 Spirit (RC-752). Road Fighter y Ping
