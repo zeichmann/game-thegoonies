@@ -154,3 +154,30 @@ doce bytes, no diez** —es una octava cromática entera, y los doce salen a raz
 1,059 unos de otros, que es la raíz doceava de dos—, así que llega hasta
 `0xB816` y los punteros son 47. Que la cuenta sea `0xB814 + n*2` solo quiere
 decir que **la primera pieza es la número 1**: no hay pieza 0.
+
+## Código compartido con otros cartuchos de Konami
+
+Este desensamblado se ha comparado, instrucción por instrucción, con
+todos los demás de Konami de la serie. Cuenta un bloque cuando las
+mismas instrucciones, al menos seis desde una etiqueta hasta su `ret`
+o su salto sin condición, están en los dos cartuchos; las direcciones
+no se miran, porque cambian de un cartucho a otro. De los otros 57,
+**52** tienen al menos un bloque en común con este; estos son los
+que más comparten:
+
+| Cartucho | Bloques | Instrucciones | Por ejemplo (aquí = allí) |
+|---|---:|---:|---|
+| [Knightmare](https://antxiko.github.io/Knightmare-disassembly/es/) | 31 | 394 | `lee_mando_y_teclado` (0x4742) |
+| [Yie Ar Kung-Fu II](https://antxiko.github.io/YieArKungFu2-disassembly/es/) | 29 | 319 | `guion_rle` (0x469D) |
+| [Hyper Sports 3](https://antxiko.github.io/HyperSports3-disassembly/es/) | 24 | 294 | `guion_rle` (0x469D) = `descomprime_a_vram` |
+| [Konami’s Soccer](https://antxiko.github.io/KonamisSoccer-disassembly/es/) | 24 | 301 | `lee_mando_y_teclado` (0x4742) = `lee_el_mando_1` |
+| [Konami's Ping Pong](https://antxiko.github.io/KonamisPingPong-disassembly/es/) | 22 | 235 | `guion_rle` (0x469D) = `descomprime` |
+| [Hyper Rally](https://antxiko.github.io/HyperRally-disassembly/es/) | 21 | 266 | `lee_mando_y_teclado` (0x4742) = `LEE_MANDOS` |
+| [Yie Ar Kung-Fu](https://antxiko.github.io/YieArKungFu-disassembly/es/) | 21 | 208 | `pinta_guion` (0x4682) = `dibuja_la_lista` |
+| [Road Fighter](https://antxiko.github.io/RoadFighter-disassembly/es/) | 19 | 247 | `lee_mando_y_teclado` (0x4742) = `lee_el_mando` |
+| [King's Valley](https://antxiko.github.io/KingsValley-disassembly/es/) | 18 | 253 | `toca_la_nota` (0xB700) = `tono_con_periodo_explicito` |
+| [Mopi Ranger](https://antxiko.github.io/MopiRanger-disassembly/es/) | 18 | 178 | `baja_un_paso` (0x49DD) = `avanza_la_cortinilla` |
+
+La matriz entera, los 58 cartuchos entre sí, está en
+[Las rutinas](https://antxiko.github.io/MSX-disassembly-database/es/LAS-RUTINAS.html) de la base de datos de la
+serie, con el método y el programa que la mide.

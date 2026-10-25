@@ -46,6 +46,18 @@ OTROS_JUEGOS = (
     "Hyper Sports", "Hyper Olympic",
 )
 
+# La seccion del codigo compartido con los otros Konami de la serie los
+# nombra a proposito: la escribe pon_en_webs.py, de MSX-disassembly-database.
+_COMPARTIDO = re.compile(
+    r"(?:^## |<h2[^>]*>)(?:Code shared with other Konami cartridges|"
+    r"C\u00f3digo compartido con otros cartuchos de Konami)"
+    r".*?(?=^## |<h2|</main>|<footer|\Z)", re.S | re.M)
+
+
+def sin_compartido(texto):
+    """El texto sin la seccion del codigo compartido."""
+    return _COMPARTIDO.sub("", texto)
+
 
 def lee(ruta):
     with open(ruta, encoding="utf-8") as f:
@@ -571,7 +583,7 @@ class TestSinNombresDeOtroJuego(unittest.TestCase):
     """El copia y pega de otro proyecto de la serie, cazado a tiempo."""
 
     def _revisa(self, ruta):
-        texto = lee(ruta)
+        texto = sin_compartido(lee(ruta))
         fn = os.path.basename(ruta)
         palabra, permitidos = CITAS_LEGITIMAS.get(fn, (None, ()))
         if permitidos:

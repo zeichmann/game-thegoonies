@@ -158,3 +158,30 @@ has twelve bytes, not ten** — it is a whole chromatic octave, and the twelve
 come out in a ratio of 1.059 to each other, which is the twelfth root of two —
 so it reaches `0xB816` and the pointers are 47. That the sum is `0xB814 + n*2`
 only means **the first piece is number 1**: there is no piece 0.
+
+## Code shared with other Konami cartridges
+
+This disassembly has been compared, instruction by instruction, with
+every other Konami one in the series. A block counts when the same
+instructions, at least six of them from a label to its `ret` or its
+unconditional jump, are in both cartridges; the addresses are left
+aside, because they change from one cartridge to the next. Of the
+other 57, **52** have at least one block in common with this one;
+these are the ones that share the most:
+
+| Cartridge | Blocks | Instructions | For example (here = there) |
+|---|---:|---:|---|
+| [Knightmare](https://antxiko.github.io/Knightmare-disassembly/) | 31 | 394 | `lee_mando_y_teclado` (0x4742) |
+| [Yie Ar Kung-Fu II](https://antxiko.github.io/YieArKungFu2-disassembly/) | 29 | 319 | `guion_rle` (0x469D) |
+| [Hyper Sports 3](https://antxiko.github.io/HyperSports3-disassembly/) | 24 | 294 | `guion_rle` (0x469D) = `descomprime_a_vram` |
+| [Konami’s Soccer](https://antxiko.github.io/KonamisSoccer-disassembly/) | 24 | 301 | `lee_mando_y_teclado` (0x4742) = `lee_el_mando_1` |
+| [Konami's Ping Pong](https://antxiko.github.io/KonamisPingPong-disassembly/) | 22 | 235 | `guion_rle` (0x469D) = `descomprime` |
+| [Hyper Rally](https://antxiko.github.io/HyperRally-disassembly/) | 21 | 266 | `lee_mando_y_teclado` (0x4742) = `LEE_MANDOS` |
+| [Yie Ar Kung-Fu](https://antxiko.github.io/YieArKungFu-disassembly/) | 21 | 208 | `pinta_guion` (0x4682) = `dibuja_la_lista` |
+| [Road Fighter](https://antxiko.github.io/RoadFighter-disassembly/) | 19 | 247 | `lee_mando_y_teclado` (0x4742) = `lee_el_mando` |
+| [King's Valley](https://antxiko.github.io/KingsValley-disassembly/) | 18 | 253 | `toca_la_nota` (0xB700) = `tono_con_periodo_explicito` |
+| [Mopi Ranger](https://antxiko.github.io/MopiRanger-disassembly/) | 18 | 178 | `baja_un_paso` (0x49DD) = `avanza_la_cortinilla` |
+
+The whole matrix, the 58 cartridges against each other, is on
+[The routines](https://antxiko.github.io/MSX-disassembly-database/THE-ROUTINES.html) in the series database, along
+with the method and the program that measures it.
